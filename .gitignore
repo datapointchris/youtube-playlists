@@ -380,3 +380,5 @@ build/
 *.iml
 *.ipr
 *.iws
+
+client_secret*
