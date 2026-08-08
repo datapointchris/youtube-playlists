@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v2.2.0 (2026-08-08)
+
+### Features
+
+- Never prompt a caller that cannot answer
+  ([`a738935`](https://github.com/datapointchris/ypl/commit/a738935397b8a673865b0a6142916cee92565957))
+
+The delete confirmation went straight to typer.confirm, so a caller without a terminal either
+  consumed stdin meant for something else or waited on a stdin that never closes — no output, no
+  exit code.
+
+confirm_or_exit gates on can_prompt() and otherwise fails naming --yes. --no-input forces that path
+  from a terminal, per the interactivity rule in ~/dev/standards/cli-design.md.
+
+can_prompt is the seam the tests move: CliRunner's stdin is never a terminal, so the prompt path
+  needs it patched and the refusal path gets tested for free.
+
+
 ## v2.1.1 (2026-08-08)
 
 ### Bug Fixes
