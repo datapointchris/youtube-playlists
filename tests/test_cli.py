@@ -391,12 +391,34 @@ def test_a_name_matching_both_stores_is_ambiguous_for_reads(synced):
     assert 'remote PL1' in result.output
 
 
-def test_deleting_a_local_playlist_asks_first(built):
+def test_deleting_a_local_playlist_asks_first(built, monkeypatch):
+    monkeypatch.setattr(main, 'can_prompt', lambda: True)
+
     assert runner.invoke(app, ['playlists', 'delete', 'Sunday'], input='n\n').exit_code == 1
     assert (paths.playlists_dir() / 'sunday.m3u').exists()
 
     assert runner.invoke(app, ['playlists', 'delete', 'Sunday', '--yes']).exit_code == 0
     assert not (paths.playlists_dir() / 'sunday.m3u').exists()
+
+
+def test_deleting_without_a_terminal_fails_naming_the_flag(built):
+    """A prompt on a stdin that never closes deadlocks the caller with no output
+    and no exit code. The CliRunner's stdin is not a terminal, which is the case."""
+    result = runner.invoke(app, ['playlists', 'delete', 'Sunday'])
+
+    assert result.exit_code == 1
+    assert '--yes' in result.output
+    assert (paths.playlists_dir() / 'sunday.m3u').exists()
+
+
+def test_no_input_refuses_the_prompt_even_on_a_terminal(built, monkeypatch):
+    monkeypatch.setattr('sys.stdin.isatty', lambda: True)
+
+    result = runner.invoke(app, ['--no-input', 'playlists', 'delete', 'Sunday'], input='y\n')
+
+    assert result.exit_code == 1
+    assert '--yes' in result.output
+    assert (paths.playlists_dir() / 'sunday.m3u').exists()
 
 
 def test_an_unreadable_playlist_file_is_named_without_breaking_the_listing(synced):

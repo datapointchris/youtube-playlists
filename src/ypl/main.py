@@ -138,6 +138,32 @@ messages = Console(stderr=True, highlight=False, soft_wrap=True)
 
 UPDATE_CONFIG = UpdateConfig(tool='ypl', owner='datapointchris')
 
+_no_input = False
+
+
+def confirm_or_exit(question: str, flag: str = '--yes') -> None:
+    """Ask for confirmation, or fail naming the flag that would have answered.
+
+    A prompt is only ever offered on an interactive stdin. Prompting a
+    non-interactive caller blocks on a stdin that never closes, leaving it with
+    no output and no exit code — the one failure a caller cannot recover from.
+    """
+    if not can_prompt():
+        messages.print(f'Refusing to prompt without an interactive terminal; pass [bold]{flag}[/bold]')
+        raise typer.Exit(1)
+    typer.confirm(question, abort=True)
+
+
+def can_prompt() -> bool:
+    """Whether a question may be asked: --no-input never allows one, and
+    otherwise stdin has to be a terminal.
+
+    _no_input is module state rather than something threaded through every
+    command, and is safe as such because the root callback runs on every
+    invocation and rewrites it — an in-process run never inherits the last one.
+    """
+    return not _no_input and sys.stdin.isatty()
+
 
 def installed_version() -> str:
     try:
@@ -216,7 +242,13 @@ def root(
         bool | None,
         typer.Option('--version', callback=show_version, is_eager=True, help='Show the installed version and exit.'),
     ] = None,
+    no_input: Annotated[
+        bool,
+        typer.Option('--no-input', help='Never prompt; fail naming the flag that would have answered.'),
+    ] = False,
 ) -> None:
+    global _no_input
+    _no_input = no_input
     if ctx.invoked_subcommand != 'update':
         notify(UPDATE_CONFIG)
     if ctx.invoked_subcommand is None:
@@ -960,7 +992,7 @@ def playlists_delete(
     connection = db.connect()
     playlist = local_or_exit(connection, name)
     if not yes:
-        typer.confirm(f'Delete {playlist.name} ({len(playlist.entries)} videos) at {playlist.path}?', abort=True)
+        confirm_or_exit(f'Delete {playlist.name} ({len(playlist.entries)} videos) at {playlist.path}?')
     service.delete_local_playlist(playlist)
     messages.print(f'Deleted {playlist.path}')
 
