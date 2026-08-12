@@ -106,7 +106,7 @@ def synced(monkeypatch):
 def test_bare_invocation_answers_rather_than_printing_a_catalogue():
     """A deliberate departure from the fleet's no-args-shows-help rule.
 
-    `~/dev/standards/cli-design.md` says bare always shows help, and argues it
+    `standards/cli-design.md` says bare always shows help, and argues it
     structurally: a tool that does work bare cannot gain a command later
     without silently changing what bare means. The standard allows an override
     for a tool whose identity is one read-only action, which this now is — the

@@ -1633,7 +1633,7 @@ def status(as_json: bool = typer.Option(False, '--json', help='Output as JSON to
             messages.print(f'                [yellow]{failure}[/yellow]')
         if len(failures) > STATUS_FAILURES_SHOWN:
             # The command rather than the count, per the no-remainder-counts rule
-            # in `~/dev/standards/cli-design.md`.
+            # in `standards/cli-design.md`.
             messages.print(f'                [yellow]and {len(failures) - STATUS_FAILURES_SHOWN} more — ypl status --json[/yellow]')
     messages.print(f'Playlists       {payload["playlists"]} here')
     for line in enrichment_lines(progress, rate):
