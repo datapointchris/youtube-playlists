@@ -138,7 +138,7 @@ def load(slug: str) -> Base | None:
 def save(base: Base, reconciled_ts: str | None = None) -> Path:
     """Record a reconcile, replacing the previous base atomically.
 
-    Written to a neighbouring temporary file and renamed over the old one,
+    Written to a neighboring temporary file and renamed over the old one,
     because a half-written base is worse than an absent one: it would raise on
     every subsequent merge until someone deleted it by hand, and the state it
     described is unrecoverable by then.

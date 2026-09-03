@@ -348,7 +348,7 @@ def test_a_move_names_the_successor_not_the_predecessor():
     """`ACTION_MOVE_VIDEO_BEFORE` means "in front of", so the field is the successor.
 
     Setting the predecessor field lands the item on the wrong side of its
-    neighbour, one position out, on every move.
+    neighbor, one position out, on every move.
     """
     mover = backend()
     mover.move_item('PL1', RemoteItem('a', 'h1'), RemoteItem('b', 'h2'))
@@ -356,7 +356,7 @@ def test_a_move_names_the_successor_not_the_predecessor():
     assert action == {'action': 'ACTION_MOVE_VIDEO_BEFORE', 'setVideoId': 'h1', 'movedSetVideoIdSuccessor': 'h2'}
 
 
-def test_moving_to_the_end_names_no_neighbour_at_all():
+def test_moving_to_the_end_names_no_neighbor_at_all():
     mover = backend()
     mover.move_item('PL1', RemoteItem('a', 'h1'), None)
     assert mover.client.requests[0]['body']['actions'][0] == {'action': 'ACTION_MOVE_VIDEO_BEFORE', 'setVideoId': 'h1'}

@@ -137,7 +137,7 @@ class Cookies:
     re-reading a file that had not changed since the run began.
 
     Both forms are kept because they answer different needs. A one-off read of a
-    single playlist has nothing to amortise an export over, and `ypl auth` has
+    single playlist has nothing to amortize an export over, and `ypl auth` has
     no run to hang one on.
     """
 

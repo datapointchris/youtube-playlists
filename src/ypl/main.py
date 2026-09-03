@@ -215,7 +215,7 @@ def next_command() -> str:
 def glance() -> None:
     """What a bare `ypl` answers with.
 
-    Not a catalogue. Thirty-nine commands in six panels is the answer to "what
+    Not a catalog. Thirty-nine commands in six panels is the answer to "what
     can this do", which is not the question anyone types a bare command to ask —
     they are asking where things stand and what to do about it. `--help` is
     still there for the other question.
@@ -275,7 +275,7 @@ def matching_playlist_titles(incomplete: str, kind: str | None) -> list[str]:
 
 
 # Typer reads a completion callback's signature and refuses any parameter it
-# does not recognise, so these take `incomplete` and nothing else. The shared
+# does not recognize, so these take `incomplete` and nothing else. The shared
 # work lives in a function that is not a callback.
 def complete_playlist(incomplete: str) -> list[str]:
     return matching_playlist_titles(incomplete, None)
@@ -617,7 +617,7 @@ def sync(
 
     try:
         # The browser directly rather than an export: one playlist is one read,
-        # and there is nothing here for an exported jar to be amortised over.
+        # and there is nothing here for an exported jar to be amortized over.
         playlist = service.sync_playlist(connection, url, cookies=ytdlp.Cookies(browser=reading_browser(settings, browser)))
     except ytdlp.YtdlpUnavailableError as error:
         messages.print(f'[red]{error}[/red]')
@@ -913,7 +913,7 @@ def playlists_edit(
     lines to reorder, delete a line to remove that video, paste a URL on its own
     line to add one. Save to apply, or save an empty buffer to abort.
 
-    Modelled on `git rebase -i`, because rearranging a list is something your
+    Modeled on `git rebase -i`, because rearranging a list is something your
     editor is already better at than any command could be. Reads the buffer from
     stdin instead when something is piped in.
     """

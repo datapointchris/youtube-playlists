@@ -332,7 +332,7 @@ def installed() -> Installed | None:
     asked before every sync, and a machine that cannot find one on its PATH must
     still be able to answer "no timer" rather than raise into the run. The
     command reported is the one the unit names, which is what makes a unit
-    written by an older install — or by a checkout — recognisable as stale.
+    written by an older install — or by a checkout — recognizable as stale.
 
     A launch agent holds all of that in one file and the systemd pair splits it:
     the interval is the timer's and the command and the PATH are the service's.

@@ -1,6 +1,6 @@
 """The text a playlist becomes while it is being edited.
 
-Modelled on `git rebase -i`, and for the same reason: rearranging a list is
+Modeled on `git rebase -i`, and for the same reason: rearranging a list is
 something text editors are already extremely good at, and any bespoke interface
 for it starts out worse than the one already open. One line per video, the id
 first so it can be read back, the title after it so the line means something.

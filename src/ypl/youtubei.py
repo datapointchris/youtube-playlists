@@ -56,7 +56,7 @@ CLIENT_VERSION = '2.20260114.08.00'
 # The browser sends one hash per SID cookie it holds, space-joined, and YouTube
 # accepts the request if any of them checks out. Sending only the first was what
 # the YouTube Music backend did, computed from `__Secure-3PAPISID` — the right
-# cookie for the 3P scheme and the wrong one for the scheme it was labelled
+# cookie for the 3P scheme and the wrong one for the scheme it was labeled
 # with. It was tolerated; it is not what the client sends.
 #
 # `SAPISID` is absent on some accounts and `__Secure-3PAPISID` stands in for it,
@@ -614,7 +614,7 @@ class YouTubeiBackend:
         `movedSetVideoIdSuccessor` names what the slot lands in front of, which
         is what `ACTION_MOVE_VIDEO_BEFORE` means. The predecessor field belongs
         to the after-variant and setting it here moves the item to the wrong
-        side of its neighbour.
+        side of its neighbor.
         """
         if not item.set_video_id:
             raise RemoteError(f'cannot move {item.video_id} — no setVideoId, so this account does not own the playlist')

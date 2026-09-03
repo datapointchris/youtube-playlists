@@ -75,7 +75,7 @@ def no_real_service_manager(monkeypatch):
 
 @pytest.fixture(autouse=True)
 def no_waiting(monkeypatch):
-    """Pacing is real behaviour, tested directly in test_throttle.
+    """Pacing is real behavior, tested directly in test_throttle.
 
     Left in here, every command that makes more than one request would sit out
     its own interval and the suite would spend minutes asleep.
@@ -103,7 +103,7 @@ def synced(monkeypatch):
     runner.invoke(app, ['sync', 'https://example.invalid/PL1'])
 
 
-def test_bare_invocation_answers_rather_than_printing_a_catalogue():
+def test_bare_invocation_answers_rather_than_printing_a_catalog():
     """A deliberate departure from the fleet's no-args-shows-help rule.
 
     `standards/cli-design.md` says bare always shows help, and argues it
@@ -1348,7 +1348,7 @@ def test_a_unit_written_before_the_background_flag_is_rewritten(homebrew_yt_dlp,
 
 
 def test_a_bare_ypl_says_where_things_stand_and_what_to_run():
-    """Not a catalogue.
+    """Not a catalog.
 
     Thirty-nine commands in six panels answered "what can this do", which is
     not the question a bare command is typed to ask. On a machine that has

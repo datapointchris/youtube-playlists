@@ -543,12 +543,12 @@ def display_title(video: sqlite3.Row) -> str:
 
 
 def entries_for(connection: sqlite3.Connection, video_ids: list[str]) -> list[m3u.Entry]:
-    """Turn video ids into playlist entries, labelled from the mirror.
+    """Turn video ids into playlist entries, labeled from the mirror.
 
     An id the mirror has never seen still becomes an entry: the playlist is a
     list of videos, and refusing to write one because it has not been synced
     would make pasting a URL in harder than it needs to be. It writes an
-    unlabelled entry, which the enrich tail then fills in.
+    unlabeled entry, which the enrich tail then fills in.
     """
     known = videos_by_id(connection, video_ids)
     return [
@@ -1652,7 +1652,7 @@ def playlists_by_video(connection: sqlite3.Connection) -> dict[str, list[str]]:
     """Which playlists hold each video.
 
     Worth carrying because the names are yours: a mix sitting in "BE HAPPY"
-    has been labelled by you already, and that is a stronger signal about it
+    has been labeled by you already, and that is a stronger signal about it
     than anything the metadata says.
     """
     rows = connection.execute(
@@ -1761,7 +1761,7 @@ def video_tracks(connection: sqlite3.Connection, video_id: str) -> list[sqlite3.
 
 
 def recent_plays(connection: sqlite3.Connection, limit: int | None = None) -> list[dict]:
-    """Listens, most recent first, labelled from the mirror where it knows them.
+    """Listens, most recent first, labeled from the mirror where it knows them.
 
     Reversed from the log's append order rather than sorted by timestamp, which
     also settles two listens logged inside the same second — the file records

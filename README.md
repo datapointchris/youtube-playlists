@@ -152,7 +152,7 @@ aaaaaaaaaaa  Cercle - At Citadelle de Sisteron       2:05:33
 bbbbbbbbbbb  Cercle - At Salle Wagram                1:48:02
 ```
 
-Modelled on `git rebase -i`, and for the same reason: rearranging a list is something your editor
+Modeled on `git rebase -i`, and for the same reason: rearranging a list is something your editor
 is already better at than any command could be. `dd`/`p`, visual block, `:m`, `:sort`,
 `:g/Cercle/m$` — all of it works, on titles, and the ids are never typed. Save an empty buffer to
 abort, the way rebase does. A line that is not a video is refused with its line number and nothing
@@ -272,7 +272,7 @@ is far too long to hand over whole — forty tracks each across a library of tho
 Nothing there says "house" or "124bpm", and nothing ever will — a chapter marker does not carry
 genre. What says it is knowing what those artists sound like, which is why this hands over the
 artists rather than pretending to label the mix. The playlists a video already sits in are carried
-for the same reason: you named those, so they are a judgement that already exists.
+for the same reason: you named those, so they are a judgment that already exists.
 
 The loop is three commands, and the middle one is a prompt:
 
@@ -329,7 +329,7 @@ Not YouTube Music either, which is where this started. A brand account has no Mu
 site answers the same cookies with the full edit surface.
 
 The web client protocol batches. One request carries an `actions` array of a hundred additions, so
-the same reorganisation is a couple of dozen requests — *less* traffic than doing it by hand in the
+the same reorganization is a couple of dozen requests — *less* traffic than doing it by hand in the
 browser. That is the argument for this route, and it only holds if the saving is not spent on
 speed, so every call goes through a throttle, batches are bounded, and a rate-limit response stops
 the run rather than retrying into it.

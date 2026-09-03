@@ -75,7 +75,7 @@ def authored_name(name: str) -> str:
     """The name ypl gives a playlist it makes here: its own slug, verbatim.
 
     Kebab-case rather than whatever was typed, so a playlist assembled here is
-    recognisable as one at a glance — in the listing, and on the phone, where it
+    recognizable as one at a glance — in the listing, and on the phone, where it
     sits among forty made by hand over a decade. It is also one string instead
     of two: the display name and the filename cannot drift apart.
 

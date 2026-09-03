@@ -6,7 +6,7 @@ M3U rather than a table or a JSON file because the local playlists are the
 authored half of ypl, and a plain list of URLs is playable by mpv, VLC and Kodi
 with no code at all. That stays true only while the file remains valid M3U,
 which is why ypl's own metadata rides on `#YPL-` comment lines: every player
-skips a `#` directive it does not recognise, so the extra facts cost nothing.
+skips a `#` directive it does not recognize, so the extra facts cost nothing.
 The alternative — a sidecar JSON next to each playlist — was rejected because
 two files describing one playlist can disagree, and hand-editing the M3U is
 expected rather than exceptional.
